@@ -16,6 +16,15 @@ repositories {
 	mavenCentral()
 }
 
+uploadArchives {
+        repositories {
+                mavenDeployer {
+                        repository(url: "https://maven.visualdna.com/nexus/content/repositories/releases/")
+                        snapshotRepository(url: "https://maven.visualdna.com/nexus/content/repositories/snapshots/")
+                }
+        }
+}
+
 dependencies {
 	compile group: "com.google.gwt", name: "gwt-user", version: gwt_version
 }
@@ -32,6 +41,7 @@ task distZip(dependsOn: ["jar"], type: Zip) {
 }
 
 build.dependsOn distZip
+uploadArchives.dependsOn build
 
 /**
  * Unpacks the artemis sources into the artemis source folder.
