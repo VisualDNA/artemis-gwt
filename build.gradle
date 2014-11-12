@@ -19,7 +19,9 @@ repositories {
 uploadArchives {
         repositories {
                 mavenDeployer {
-                        repository(url: "https://maven.visualdna.com/nexus/content/repositories/releases/") {
+			pom.artifactId = 'artemis-gwt'
+
+			repository(url: "https://maven.visualdna.com/nexus/content/repositories/releases/") {
 				authentication(userName: visualdnaReleasesUser, password: visualdnaReleasesPassword)
 			}
 
