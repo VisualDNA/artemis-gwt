@@ -19,8 +19,13 @@ repositories {
 uploadArchives {
         repositories {
                 mavenDeployer {
-                        repository(url: "https://maven.visualdna.com/nexus/content/repositories/releases/")
-                        snapshotRepository(url: "https://maven.visualdna.com/nexus/content/repositories/snapshots/")
+                        repository(url: "https://maven.visualdna.com/nexus/content/repositories/releases/") {
+				authentication(userName: visualdnaReleasesUser, password: visualdnaReleasesPassword)
+			}
+
+                        snapshotRepository(url: "https://maven.visualdna.com/nexus/content/repositories/snapshots/") {
+				authentication(userName: visualdnaSnapshotsUser, password: visualdnaSnapshotsPassword)
+			}
                 }
         }
 }
